@@ -99,7 +99,7 @@ function _hydro_prompt --on-event fish_prompt
 
         command git diff-index --quiet HEAD 2>/dev/null
         test \$status -eq 1 ||
-            count (command git ls-files --others --exclude-standard (command git rev-parse --show-toplevel)) >/dev/null && set info \"$hydro_symbol_git_dirty\"
+            count (command git ls-files --others --exclude-standard (command git rev-parse --show-toplevel)) >/dev/null && set dirty \"$hydro_symbol_git_dirty\"
 
         for fetch in $hydro_fetch false
             command git rev-list --count --left-right @{upstream}...@ 2>/dev/null |
@@ -115,7 +115,7 @@ function _hydro_prompt --on-event fish_prompt
                     set upstream \" $hydro_symbol_git_ahead \$ahead $hydro_symbol_git_behind \$behind\"
             end
 
-            set --universal $_hydro_git \"\$branch\$info\$upstream \"
+            set --universal $_hydro_git \"\$branch\$dirty\$upstream \"
 
             test \$fetch = true && command git fetch --no-tags 2>/dev/null
         end
