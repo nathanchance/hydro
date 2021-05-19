@@ -81,6 +81,8 @@ function _hydro_prompt --on-event fish_prompt
         ! command git diff-index --quiet HEAD 2>/dev/null ||
             count (command git ls-files --others --exclude-standard (command git rev-parse --show-toplevel)) >/dev/null && set dirty \"$hydro_symbol_git_dirty\"
 
+        command git rev-list --walk-reflogs --count refs/stash >/dev/null 2>&1 && set stash \" $hydro_symbol_git_stash\"
+
         for fetch in $hydro_fetch false
             command git rev-list --count --left-right @{upstream}...@ 2>/dev/null |
                 read behind ahead
@@ -95,7 +97,7 @@ function _hydro_prompt --on-event fish_prompt
                     set upstream \" $hydro_symbol_git_ahead \$ahead $hydro_symbol_git_behind \$behind\"
             end
 
-            set --universal $_hydro_git \"\$branch\$dirty\$upstream \"
+            set --universal $_hydro_git \"\$branch\$dirty\$stash\$upstream \"
 
             test \$fetch = true && command git fetch --no-tags 2>/dev/null
         end
@@ -132,6 +134,7 @@ end && hydro_multiline
 set --query hydro_color_error || set --global hydro_color_error $fish_color_error
 set --query hydro_symbol_prompt || set --global hydro_symbol_prompt ❱
 set --query hydro_symbol_git_dirty || set --global hydro_symbol_git_dirty •
+set --query hydro_symbol_git_stash || set --global hydro_symbol_git_stash ≡
 set --query hydro_symbol_git_ahead || set --global hydro_symbol_git_ahead ↑
 set --query hydro_symbol_git_behind || set --global hydro_symbol_git_behind ↓
 set --query hydro_multiline || set --global hydro_multiline false

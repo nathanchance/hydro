@@ -92,6 +92,7 @@ Modify variables using `set --universal` from the command line or `set --global`
 | ------------------------- | ------ | ------------------------------- | ------- |
 | `hydro_symbol_prompt`     | string | Prompt symbol.                  | `❱`     |
 | `hydro_symbol_git_dirty`  | string | Dirty repository symbol.        | `•`     |
+| `hydro_symbol_git_stash`  | string | Stash repository symbol.        | `≡`     |
 | `hydro_symbol_git_ahead`  | string | Ahead of your upstream symbol.  | `↑`     |
 | `hydro_symbol_git_behind` | string | Behind of your upstream symbol. | `↓`     |
 
