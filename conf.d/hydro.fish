@@ -88,11 +88,11 @@ function _hydro_prompt --on-event fish_prompt
             switch \"\$behind \$ahead\"
                 case \" \" \"0 0\"
                 case \"0 *\"
-                    set upstream \" $hydro_symbol_git_ahead\$ahead\"
+                    set upstream \" $hydro_symbol_git_ahead \$ahead\"
                 case \"* 0\"
-                    set upstream \" $hydro_symbol_git_behind\$behind\"
+                    set upstream \" $hydro_symbol_git_behind \$behind\"
                 case \*
-                    set upstream \" $hydro_symbol_git_ahead\$ahead $hydro_symbol_git_behind\$behind\"
+                    set upstream \" $hydro_symbol_git_ahead \$ahead $hydro_symbol_git_behind \$behind\"
             end
 
             set --universal $_hydro_git \"\$branch\$info\$upstream \"
