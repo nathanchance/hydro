@@ -64,7 +64,7 @@ function _hydro_prompt --on-event fish_prompt
     command kill $_hydro_last_pid 2>/dev/null
 
     fish --private --command "
-        set --universal $_hydro_addons ($addons) \"\"
+        set --universal $_hydro_addons ($addons)
 
         test -z \"$_hydro_git_root\" && set $_hydro_git && exit
 
