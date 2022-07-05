@@ -83,7 +83,7 @@ function _hydro_prompt --on-event fish_prompt
     end
 
     fish --private --command "
-        set --universal $_hydro_addons ($addons) \"\"
+        set --universal $_hydro_addons ($addons)
 
         set --query _hydro_skip_git_prompt && set $_hydro_git && exit
 
